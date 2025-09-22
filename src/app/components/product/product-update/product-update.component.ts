@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
+import { Fornecedor } from '../../fornecedor/fornecedor.model';
+import { FornecedorService } from '../../fornecedor/fornecedor.service';
 
 @Component({
   selector: 'app-product-update',
@@ -11,8 +13,10 @@ import { ProductService } from '../product.service';
 export class ProductUpdateComponent implements OnInit {
 
   product!: Product;
+  fornecedores: Fornecedor[] = []
 
   constructor(private productService: ProductService, 
+    private fornecedorService: FornecedorService,
     private router: Router, 
     private route: ActivatedRoute) {}
 
@@ -20,6 +24,10 @@ export class ProductUpdateComponent implements OnInit {
     const proId = this.route.snapshot.paramMap.get('proId')
     this.productService.readById(proId!).subscribe((product: Product) =>{
       this.product = product
+    })
+    
+    this.fornecedorService.read().subscribe(fornecedores => {
+      this.fornecedores = fornecedores
     })
   }
 

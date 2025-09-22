@@ -10,6 +10,13 @@
         <mat-form-field>
             <input matInput placeholder="Preço de venda (R$)" [(ngModel)]="product.proPrecoVenda" name="proPrecoVenda">
         </mat-form-field>
+        <mat-form-field>
+            <mat-select placeholder="Fornecedor" [(ngModel)]="product.fornecedor" name="fornecedor">
+                <mat-option *ngFor="let fornecedor of fornecedores" [value]="fornecedor">
+                    {{fornecedor.forNomeFantasia}} - {{fornecedor.forRazaoSocial}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
     </form>
 
     <button mat-raised-button (click)="createProduct()" color="primary">
