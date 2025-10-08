@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-livro-create',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LivroCreateComponent implements OnInit {
 
-  constructor() { }
+  livro: Livro = {
+    titulo:'',
+    isbn:'',
+    autor: '', 
+    editora: '', 
+  }
+  constructor(private livrosService: livrosService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
