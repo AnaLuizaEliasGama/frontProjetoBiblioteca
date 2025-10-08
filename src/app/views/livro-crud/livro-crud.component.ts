@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-livro-crud',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LivroCrudComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+  
 
   ngOnInit(): void {
   }
+
+  // Criando botão de novo Livro ☻☻☻
+  navigateToLivroCreate(): void{
+    this.router.navigate(['livro/create'])
+  }
+
 
 }

@@ -8,6 +8,7 @@ import { ProductDeleteComponent } from './components/product/product-delete/prod
 import { FormaPagamentoCrudComponent } from './views/forma-pagamento-crud/forma-pagamento-crud.component';
 import { FornecedorCrudComponent } from './views/fornecedor-crud/fornecedor-crud.component';
 import { FornecedorCreateComponent } from './components/fornecedor/fornecedor-create/fornecedor-create.component';
+import { LivroCrudComponent } from './views/livro-crud/livro-crud.component';
 
 //configuração para rotear entre as paginas na home
 const routes: Routes = [
@@ -43,7 +44,11 @@ const routes: Routes = [
     path: "fornecedores/create",
     component: FornecedorCreateComponent
   },
-  
+    {
+    path: "livros",
+    component: LivroCrudComponent
+  }
+
 ];
 
 @NgModule({
