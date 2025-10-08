@@ -41,6 +41,7 @@ import { FormaPagamentoReadComponent } from './components/formaPagamento/forma-p
 import { FormaPagamentoCrudComponent } from './views/forma-pagamento-crud/forma-pagamento-crud.component';
 import { FornecedorCrudComponent } from './views/fornecedor-crud/fornecedor-crud.component';
 import { FornecedorCreateComponent } from './components/fornecedor/fornecedor-create/fornecedor-create.component';
+import { LivroCrudComponent } from './views/livro-crud/livro-crud.component';
 
 registerLocaleData(localePt)
 
@@ -60,7 +61,8 @@ registerLocaleData(localePt)
     FormaPagamentoReadComponent,
     FormaPagamentoCrudComponent,
     FornecedorCrudComponent,
-    FornecedorCreateComponent
+    FornecedorCreateComponent,
+    LivroCrudComponent
   ],
   imports: [
     BrowserModule,
