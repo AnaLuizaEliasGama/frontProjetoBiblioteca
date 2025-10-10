@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Livro } from './livro.model';
+import { Livro } from '../livro.model';
 import { LivroService } from '../livro.service';
 
 
