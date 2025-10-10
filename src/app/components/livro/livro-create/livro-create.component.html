@@ -1,1 +1,39 @@
-<p>livro-create works!</p>
+<mat-card>
+    <mat-card-title>Novo Livro</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Título" [(ngModel)]="livro.titulo" name="titulo">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="ISBN" [(ngModel)]="livro.isbn" name="isbn">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input matInput placeholder="Autor(a)" [(ngModel)]="livro.autor" name="autor">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Editora" [(ngModel)]="livro.editora" name="editora">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Edição" [(ngModel)]="livro.edicao" name="edicao">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Idioma" [(ngModel)]="livro.idioma" name="idioma">
+        </mat-form-field>
+        
+                
+    </form>
+
+    <button mat-raised-button (click)="createLivro()" color="primary">
+        Salvar Livro
+    </button>
+    
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+
+</mat-card>

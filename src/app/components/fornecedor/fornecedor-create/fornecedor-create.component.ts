@@ -9,37 +9,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./fornecedor-create.component.css']
 })
 export class FornecedorCreateComponent implements OnInit {
- 
-   fornecedor: Fornecedor = {
-     forNomeFantasia: '',
-     forCnpj: '',
-     forRazaoSocial: '',
-     endRua: '',
-     endNumero: '',
-     endCidade: '',
-     endCep: '',
-     endEstado: '',
-     conCelular: '',
-     conTelefoneComercial: '',
-     conEmail: ''
-   }
- 
-   //importando productService
-   constructor(private fornecedorService: FornecedorService,
-     private router: Router) { }
-   
-   ngOnInit(): void {
-     
-   }
- 
-   createFornecedor(): void {
-     this.fornecedorService.create(this.fornecedor).subscribe(() => {
-       this.fornecedorService.showMessage('Fornecedor criado!')
-       this.router.navigate(['/fornecedores'])
-     })
-   }
- 
-   cancel(): void {
-     this.router.navigate(['/fornecedores'])
-   }  
- }
+  
+    fornecedor: Fornecedor = {
+      // id: '', // Inclua se o ID for obrigatório na interface
+      forNomeFantasia: '',
+      forCnpj: '',
+      forRazaoSocial: '',
+      endRua: '',
+      endNumero: '',
+      endCidade: '',
+      endCep: '',
+      endEstado: '',
+      conCelular: '',
+      conTelefoneComercial: '',
+      conEmail: ''
+    }
+  
+    // CORRIGIDO: Removido o comentário incorreto
+    constructor(private fornecedorService: FornecedorService,
+      private router: Router) { }
+    
+    ngOnInit(): void {
+      
+    }
+  
+    createFornecedor(): void {
+      this.fornecedorService.create(this.fornecedor).subscribe(() => {
+        this.fornecedorService.showMessage('Fornecedor criado!')
+        this.router.navigate(['/fornecedores'])
+      })
+    }
+  
+    cancel(): void {
+      this.router.navigate(['/fornecedores'])
+    } 
+}

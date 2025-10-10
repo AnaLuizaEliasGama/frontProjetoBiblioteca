@@ -45,6 +45,7 @@ import { LivroCrudComponent } from './views/livro-crud/livro-crud.component';
 import { LivroCreateComponent } from './components/livro/livro-create/livro-create.component';
 import { EmprestimosComponent } from './components/emprestimos/emprestimos.component';
 import { FornecedorReadComponent } from './components/fornecedor/fornecedor-read/fornecedor-read.component';
+import { LivroReadComponent } from './components/livro/livro-read/livro-read.component';
 
 registerLocaleData(localePt)
 
@@ -68,7 +69,8 @@ registerLocaleData(localePt)
     LivroCrudComponent,
     LivroCreateComponent,
     EmprestimosComponent,
-    FornecedorReadComponent
+    FornecedorReadComponent,
+    LivroReadComponent
   ],
   imports: [
     BrowserModule,
