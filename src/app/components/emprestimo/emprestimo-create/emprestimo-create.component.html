@@ -1,0 +1,59 @@
+<mat-card>
+  <mat-card-title>Novo Empréstimo</mat-card-title>
+
+  <form>
+
+    <!-- Data do empréstimo -->
+    <mat-form-field>
+      <input 
+        matInput 
+        type="date"
+        placeholder="Data do Empréstimo"
+        [(ngModel)]="emprestimo.dataEmprestimo" 
+        name="dataEmprestimo">
+    </mat-form-field>
+
+    <!-- Data de devolução prevista -->
+    <mat-form-field>
+      <input 
+        matInput 
+        type="date"
+        placeholder="Data de Devolução"
+        [(ngModel)]="emprestimo.dataDevolucao" 
+        name="dataDevolucao">
+    </mat-form-field>
+
+    <!-- Seleção de livro -->
+    <mat-form-field>
+      <mat-select 
+        placeholder="Livro"
+        [(ngModel)]="emprestimo.livro" 
+        name="livro">
+        <mat-option *ngFor="let livro of livros" [value]="livro">
+          {{livro.titulo}} — {{livro.autor}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Seleção de cliente -->
+    <mat-form-field>
+      <mat-select 
+        placeholder="Cliente"
+        [(ngModel)]="emprestimo.cliente" 
+        name="cliente">
+        <mat-option *ngFor="let cliente of clientes" [value]="cliente">
+          {{cliente.cliNome}} — CPF: {{cliente.cliCpf}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+
+  <button mat-raised-button (click)="createEmprestimo()" color="primary">
+    Salvar
+  </button>
+  
+  <button mat-raised-button (click)="cancel()">
+    Cancelar
+  </button>
+</mat-card>

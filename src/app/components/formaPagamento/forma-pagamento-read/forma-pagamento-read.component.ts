@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormaPagamentoService } from '../forma-pagamento.service';
-import { FormaPagamento } from '../formaPagamento.model';
+import { FormaPagamento } from '../FormaPagamento.model';
 
 @Component({
   selector: 'app-forma-pagamento-read',

@@ -1,1 +1,77 @@
-<p>forma-pagamento-update works!</p>
+<mat-card>
+  <mat-card-title>Alterar Forma de Pagamento</mat-card-title>
+
+  <form>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Descrição"
+        [(ngModel)]="pagamento.descricao"
+        name="descricao"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Tipo"
+        [(ngModel)]="pagamento.tipo"
+        name="tipo"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        placeholder="Número de parcelas"
+        [(ngModel)]="pagamento.numeroParcelas"
+        name="numeroParcelas"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        placeholder="Dias entre parcelas"
+        [(ngModel)]="pagamento.diasEntreParcelas"
+        name="diasEntreParcelas"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Permite troco</mat-label>
+      <mat-select [(ngModel)]="pagamento.permiteTroco" name="permiteTroco">
+        <mat-option [value]="true">Sim</mat-option>
+        <mat-option [value]="false">Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        placeholder="Taxa percentual (%)"
+        [(ngModel)]="pagamento.taxaPercentual"
+        name="taxaPercentual"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ativo</mat-label>
+      <mat-select [(ngModel)]="pagamento.ativo" name="ativo">
+        <mat-option [value]="true">Sim</mat-option>
+        <mat-option [value]="false">Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button color="primary" (click)="updatePagamento()">
+    Atualizar
+  </button>
+
+  <button mat-raised-button (click)="cancel()">
+    Cancelar
+  </button>
+</mat-card>

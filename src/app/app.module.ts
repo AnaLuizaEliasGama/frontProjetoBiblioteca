@@ -26,17 +26,17 @@ import { MatSelectModule } from '@angular/material/select';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './views/home/home.component';
-import { ProductCrudComponent } from './views/product-crud/product-crud.component';
+import { EmprestimoUpdateComponent } from './components/emprestimo/emprestimo-update/emprestimo-update.component';
 import { RedDirective } from './directives/red.directive';
-import { ProductCreateComponent } from './components/product/product-create/product-create.component';
+import { empres } from 
 
 //importações
-import { ProductReadComponent } from './components/product/product-read/product-read.component';
+import { EmprestimoReadComponent } from './components/emprestimo/emprestimo-read/emprestimo-read.component';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
-import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
-import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
+// import { EmprestimoUpdateComponent } from './components/emprestimo/emprestimo-update/emprestimo-update.component'; <-- LINHA DUPLICADA REMOVIDA
+import { EmprestimoDeleteComponent } from './components/emprestimo/emprestimo-delete/emprestimo-delete.component';
 import { FormaPagamentoReadComponent } from './components/formaPagamento/forma-pagamento-read/forma-pagamento-read.component';
 import { FormaPagamentoCrudComponent } from './views/forma-pagamento-crud/forma-pagamento-crud.component';
 import { FornecedorCrudComponent } from './views/fornecedor-crud/fornecedor-crud.component';
@@ -51,53 +51,55 @@ import { FormaPagamentoUpdateComponent } from './components/formaPagamento/forma
 registerLocaleData(localePt)
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    NavComponent,
-    HomeComponent,
-    ProductCrudComponent,
-    RedDirective,
-    ProductCreateComponent,
-    ProductReadComponent,
-    ProductUpdateComponent,
-    ProductDeleteComponent,
-    FormaPagamentoReadComponent,
-    FormaPagamentoCrudComponent,
-    FornecedorCrudComponent,
-    FornecedorCreateComponent,
-    LivroCrudComponent,
-    LivroCreateComponent,
-    FornecedorReadComponent,
-    LivroReadComponent,
-    FormaPagamentoCreateComponent,
-    FormaPagamentoUpdateComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    //precisamos declara os modulos de material importados
-    MatToolbarModule, 
-    MatSidenavModule,
-    MatListModule,
-    MatCardModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    HttpClientModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatSelectModule
-  ],
-  providers: [{
-    provide: LOCALE_ID,
-    useValue: 'pt-BR'
-  }],
-  bootstrap: [AppComponent]
+  declarations: [
+AppComponent,
+HeaderComponent,
+    FooterComponent,
+    NavComponent,
+    HomeComponent,
+
+    // EmprestimoCrudComponent, <-- DECLARAÇÃO REMOVIDA (não foi importada e gerou erro)
+
+    RedDirective,
+    EmprestimoCreateComponent,
+    EmprestimoReadComponent,
+    EmprestimoUpdateComponent,
+    EmprestimoDeleteComponent,
+    FormaPagamentoReadComponent,
+    FormaPagamentoCrudComponent,
+    FornecedorCrudComponent,
+    FornecedorCreateComponent,
+    LivroCrudComponent,
+    LivroCreateComponent,
+    FornecedorReadComponent,
+    LivroReadComponent,
+    FormaPagamentoCreateComponent,
+    FormaPagamentoUpdateComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    //precisamos declara os modulos de material importados
+    MatToolbarModule, 
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    HttpClientModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSelectModule
+  ],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: 'pt-BR'
+  }],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

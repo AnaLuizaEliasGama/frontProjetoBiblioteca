@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../product.service';
+import { ProductService } from '../emprestimo.service';
 import { Router } from '@angular/router';
-import { Product } from '../product.model';
+import { Product } from '../emprestimo.model';
 import { Fornecedor } from '../../fornecedor/fornecedor.model';
 import { FornecedorService } from '../../fornecedor/fornecedor.service';
 
 @Component({
-  selector: 'app-product-create',
-  templateUrl: './product-create.component.html',
-  styleUrls: ['./product-create.component.css']
+  selector: 'app-emprestimo-create',
+  templateUrl: './emprestimo-create.component.html',
+  styleUrls: ['./emprestimo-create.component.css']
 })
 export class ProductCreateComponent implements OnInit {
+createEmprestimo() {
+throw new Error('Method not implemented.');
+}
 
-  product: Product = {
+  emprestimo: Product = {
     proNome: '',
     proPrecoCusto: 0,
     proPrecoVenda: 0,
@@ -21,8 +24,8 @@ export class ProductCreateComponent implements OnInit {
 
   fornecedores: Fornecedor[] = []
 
-  //importando productService
-  constructor(private productService: ProductService,
+  //importando emprestimoService
+  constructor(private emprestimoService: ProductService,
     private fornecedorService: FornecedorService,
     private router: Router) { }
   
@@ -33,13 +36,13 @@ export class ProductCreateComponent implements OnInit {
   }
 
   createProduct(): void {
-    this.productService.create(this.product).subscribe(() => {
-      this.productService.showMessage('Produto criado!')
-      this.router.navigate(['/products'])
+    this.emprestimoService.create(this.emprestimo).subscribe(() => {
+      this.emprestimoService.showMessage('Emprestimo criado!')
+      this.router.navigate(['/emprestimos'])
     })
   }
 
   cancel(): void {
-    this.router.navigate(['/products'])
+    this.router.navigate(['/emprestimos'])
   }  
 }

@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-product-crud',
-  templateUrl: './product-crud.component.html',
-  styleUrls: ['./product-crud.component.css']
+  selector: 'app-emprestimo-crud',
+  templateUrl: './emprestimo-crud.component.html',
+  styleUrls: ['./emprestimo-crud.component.css']
 })
 
 export class ProductCrudComponent implements OnInit {
@@ -18,7 +18,7 @@ export class ProductCrudComponent implements OnInit {
 
   //criando interação com botoes
   navigateToProductCreate(): void{
-    this.router.navigate(['/products/create'])
+    this.router.navigate(['/emprestimos/create'])
   }
 
 }

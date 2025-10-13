@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 //importando matSnackBar
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { Product } from './product.model';
+import { Product } from './emprestimo.model';
 
 @Injectable({
   providedIn: 'root'

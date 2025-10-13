@@ -1,10 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
-import { ProductCrudComponent } from './views/product-crud/product-crud.component';
-import { ProductCreateComponent } from './components/product/product-create/product-create.component';
-import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
-import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
+import { EmprestimoUpdateComponent } from './components/emprestimo/emprestimo-update/emprestimo-update.component';
 import { FormaPagamentoCrudComponent } from './views/forma-pagamento-crud/forma-pagamento-crud.component';
 import { FornecedorCrudComponent } from './views/fornecedor-crud/fornecedor-crud.component';
 import { FornecedorCreateComponent } from './components/fornecedor/fornecedor-create/fornecedor-create.component';
@@ -19,20 +16,20 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: "products",
-    component: ProductCrudComponent
+    path: "emprestimos",
+    component: EmprestimoCrudComponent
   },
   {
-    path: "products/create",
-    component: ProductCreateComponent
+    path: "emprestimos/create",
+    component: emprestimoCreateComponent
   },
   {
-    path: "products/update/:proId",
-    component: ProductUpdateComponent
+    path: "emprestimos/update/:proId",
+    component: EmprestimoUpdateComponent
   },
   {
-    path: "products/delete/:proId",
-    component: ProductDeleteComponent
+    path: "emprestimos/delete/:proId",
+    component: EmprestimoDeleteComponent
   },
   {
     path: "fpagamentos",
