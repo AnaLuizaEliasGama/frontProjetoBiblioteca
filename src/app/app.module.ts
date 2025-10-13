@@ -43,9 +43,9 @@ import { FornecedorCrudComponent } from './views/fornecedor-crud/fornecedor-crud
 import { FornecedorCreateComponent } from './components/fornecedor/fornecedor-create/fornecedor-create.component';
 import { LivroCrudComponent } from './views/livro-crud/livro-crud.component';
 import { LivroCreateComponent } from './components/livro/livro-create/livro-create.component';
-import { EmprestimosComponent } from './components/emprestimos/emprestimos.component';
 import { FornecedorReadComponent } from './components/fornecedor/fornecedor-read/fornecedor-read.component';
 import { LivroReadComponent } from './components/livro/livro-read/livro-read.component';
+import { FormaPagamentoCreateComponent } from './components/formaPagamento/forma-pagamento-create/forma-pagamento-create.component';
 
 registerLocaleData(localePt)
 
@@ -68,9 +68,9 @@ registerLocaleData(localePt)
     FornecedorCreateComponent,
     LivroCrudComponent,
     LivroCreateComponent,
-    EmprestimosComponent,
     FornecedorReadComponent,
-    LivroReadComponent
+    LivroReadComponent,
+    FormaPagamentoCreateComponent
   ],
   imports: [
     BrowserModule,

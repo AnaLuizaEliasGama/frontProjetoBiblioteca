@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormaPagamento } from './formaPagamento.model';
 import { Observable } from 'rxjs';
+import { FormaPagamento } from './formaPagamento.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormaPagamentoService {
 
-  baseUrl = "http://localhost:8080/fpagamentos"
+  baseUrl = "http://localhost:8080/pagamentos"
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
@@ -21,22 +22,22 @@ export class FormaPagamentoService {
     })
   }
 
-  create(formaPagamento: FormaPagamento): Observable<FormaPagamento>{
-    return this.http.post<FormaPagamento>(this.baseUrl, formaPagamento)
+  create(pagamento: FormaPagamento): Observable<FormaPagamento>{
+    return this.http.post<FormaPagamento>(this.baseUrl, pagamento)
   }
 
   read(): Observable<FormaPagamento[]>{
     return this.http.get<FormaPagamento[]>(this.baseUrl)
   }
 
-  readById(fpgId: string): Observable<FormaPagamento>{
-    const url = `${this.baseUrl}/${fpgId}`
+  readById(id: string): Observable<FormaPagamento>{
+    const url = `${this.baseUrl}/${id}`
     return this.http.get<FormaPagamento>(url)
   }
  
-  update(formaPagamento: FormaPagamento): Observable<FormaPagamento>{
-    const url = `${this.baseUrl}/${formaPagamento.fpgId}`
-    return this.http.put<FormaPagamento>(url, formaPagamento)
+  update(pagamento: FormaPagamento): Observable<FormaPagamento>{
+    const url = `${this.baseUrl}/${pagamento.id}`
+    return this.http.put<FormaPagamento>(url, pagamento)
   }
   
   delete(fpgId: number): Observable<FormaPagamento>{    

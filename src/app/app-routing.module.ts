@@ -9,6 +9,7 @@ import { FormaPagamentoCrudComponent } from './views/forma-pagamento-crud/forma-
 import { FornecedorCrudComponent } from './views/fornecedor-crud/fornecedor-crud.component';
 import { FornecedorCreateComponent } from './components/fornecedor/fornecedor-create/fornecedor-create.component';
 import { LivroCrudComponent } from './views/livro-crud/livro-crud.component';
+import { FormaPagamentoCreateComponent } from './components/formaPagamento/forma-pagamento-create/forma-pagamento-create.component';
 
 //configuração para rotear entre as paginas na home
 const routes: Routes = [
@@ -36,6 +37,10 @@ const routes: Routes = [
     path: "fpagamentos",
     component: FormaPagamentoCrudComponent
   },
+  {
+    path: "fpagamentos/create",
+    component: FormaPagamentoCreateComponent
+  },  
   {
     path: "fornecedores",
     component: FornecedorCrudComponent

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormaPagamento } from '../formaPagamento.model';
+
 import { FormaPagamentoService } from '../forma-pagamento.service';
+import { FormaPagamento } from '../formaPagamento.model';
 
 @Component({
   selector: 'app-forma-pagamento-read',
@@ -9,16 +10,22 @@ import { FormaPagamentoService } from '../forma-pagamento.service';
 })
 export class FormaPagamentoReadComponent implements OnInit {
 
-  fpagamentos!: FormaPagamento[]
-   displayedColumns = ['fpgId', 'fpgDescricao', 'action']
- 
-   constructor(private formaPagamentoService: FormaPagamentoService) { }
- 
-   ngOnInit(): void {
-     this.formaPagamentoService.read().subscribe(fpagamentos => {
-       this.fpagamentos = fpagamentos
-       console.log(fpagamentos)  
-     })
-   }
+ pagamentos!: FormaPagamento[];
+  displayedColumns = [
+    'id',
+    'descricao',
+    'tipo',
+    'ativo',
+    'action'
+  ];
+
+  constructor(private pagamentoService: FormaPagamentoService) {}
+
+  ngOnInit(): void {
+    this.pagamentoService.read().subscribe(pagamentos => {
+      this.pagamentos = pagamentos;
+      console.log(pagamentos);
+    });
+  }
 
 }
