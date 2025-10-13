@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {HomeComponent} from './views/home/home.component';
-import {ProductCrudComponent} from  './views/product-crud/product-crud.component';
+import { HomeComponent } from './views/home/home.component';
+import { ProductCrudComponent } from './views/product-crud/product-crud.component';
 import { ProductCreateComponent } from './components/product/product-create/product-create.component';
 import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
 import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
@@ -10,6 +10,7 @@ import { FornecedorCrudComponent } from './views/fornecedor-crud/fornecedor-crud
 import { FornecedorCreateComponent } from './components/fornecedor/fornecedor-create/fornecedor-create.component';
 import { LivroCrudComponent } from './views/livro-crud/livro-crud.component';
 import { FormaPagamentoCreateComponent } from './components/formaPagamento/forma-pagamento-create/forma-pagamento-create.component';
+import { FormaPagamentoUpdateComponent } from './components/formaPagamento/forma-pagamento-update/forma-pagamento-update.component';
 
 //configuração para rotear entre as paginas na home
 const routes: Routes = [
@@ -40,7 +41,11 @@ const routes: Routes = [
   {
     path: "fpagamentos/create",
     component: FormaPagamentoCreateComponent
-  },  
+  },
+  {
+    path: "fpagamentos/update/:id",
+    component: FormaPagamentoUpdateComponent
+  },
   {
     path: "fornecedores",
     component: FornecedorCrudComponent
@@ -49,7 +54,7 @@ const routes: Routes = [
     path: "fornecedores/create",
     component: FornecedorCreateComponent
   },
-    {
+  {
     path: "livros",
     component: LivroCrudComponent
   }

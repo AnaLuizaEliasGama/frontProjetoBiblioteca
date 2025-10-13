@@ -46,6 +46,7 @@ import { LivroCreateComponent } from './components/livro/livro-create/livro-crea
 import { FornecedorReadComponent } from './components/fornecedor/fornecedor-read/fornecedor-read.component';
 import { LivroReadComponent } from './components/livro/livro-read/livro-read.component';
 import { FormaPagamentoCreateComponent } from './components/formaPagamento/forma-pagamento-create/forma-pagamento-create.component';
+import { FormaPagamentoUpdateComponent } from './components/formaPagamento/forma-pagamento-update/forma-pagamento-update.component';
 
 registerLocaleData(localePt)
 
@@ -70,7 +71,8 @@ registerLocaleData(localePt)
     LivroCreateComponent,
     FornecedorReadComponent,
     LivroReadComponent,
-    FormaPagamentoCreateComponent
+    FormaPagamentoCreateComponent,
+    FormaPagamentoUpdateComponent
   ],
   imports: [
     BrowserModule,
