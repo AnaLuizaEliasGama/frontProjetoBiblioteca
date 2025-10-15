@@ -14,10 +14,7 @@ const routes: Routes = [
     path: "",
     component: HomeComponent
   },
-  {
-   
-  
-  },
+
   {
     path: "fpagamentos",
     component: FormaPagamentoCrudComponent

@@ -49,6 +49,7 @@ import { FormaPagamentoUpdateComponent } from './components/formaPagamento/forma
 import { EmprestimoCreateComponent } from './components/emprestimo/emprestimo-create/emprestimo-create.component';
 import { EmprestimoReadComponent } from './components/emprestimo/emprestimo-read/emprestimo-read.component';
 import { EmprestimoUpdateComponent } from './components/emprestimo/emprestimo-update/emprestimo-update.component';
+import { EmprestimoCrudComponent } from './views/emprestimo-crud/emprestimo-crud.component';
 
 registerLocaleData(localePt)
 
@@ -74,7 +75,8 @@ registerLocaleData(localePt)
     FormaPagamentoUpdateComponent,
     EmprestimoCreateComponent,
     EmprestimoReadComponent,
-    EmprestimoUpdateComponent
+    EmprestimoUpdateComponent,
+    EmprestimoCrudComponent
   ],
   imports: [
     BrowserModule,

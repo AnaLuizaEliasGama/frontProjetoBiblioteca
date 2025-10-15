@@ -13,6 +13,7 @@ export class EmprestimoReadComponent implements OnInit {
   
   // Colunas para a tabela (ajustadas ao Model)
   displayedColumns = ['id', 'clienteId', 'livroId', 'dataEmprestimo', 'dataDevolucao', 'status', 'acoes'];
+navigate: any;
 
   constructor(private emprestimoService: EmprestimoService) { }
 
