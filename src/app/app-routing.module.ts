@@ -1,7 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
-import { EmprestimoUpdateComponent } from './components/emprestimo/emprestimo-update/emprestimo-update.component';
 import { FormaPagamentoCrudComponent } from './views/forma-pagamento-crud/forma-pagamento-crud.component';
 import { FornecedorCrudComponent } from './views/fornecedor-crud/fornecedor-crud.component';
 import { FornecedorCreateComponent } from './components/fornecedor/fornecedor-create/fornecedor-create.component';
@@ -16,20 +15,8 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: "emprestimos",
-    component: EmprestimoCrudComponent
-  },
-  {
-    path: "emprestimos/create",
-    component: emprestimoCreateComponent
-  },
-  {
-    path: "emprestimos/update/:proId",
-    component: EmprestimoUpdateComponent
-  },
-  {
-    path: "emprestimos/delete/:proId",
-    component: EmprestimoDeleteComponent
+   
+  
   },
   {
     path: "fpagamentos",

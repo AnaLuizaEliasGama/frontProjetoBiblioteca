@@ -1,59 +1,40 @@
 <mat-card>
-  <mat-card-title>Novo Empréstimo</mat-card-title>
+    <mat-card-title>Novo Empréstimo</mat-card-title>
+    
+    <form (ngSubmit)="createEmprestimo()"> 
+        
+        <mat-form-field>
+            <input matInput placeholder="ID do Cliente" [(ngModel)]="emprestimo.clienteId" name="clienteId" type="number" required>
+        </mat-form-field>
 
-  <form>
+        <mat-form-field>
+            <input matInput placeholder="ID do Livro" [(ngModel)]="emprestimo.livroId" name="livroId" type="number" required>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input matInput placeholder="Data do Empréstimo" [(ngModel)]="emprestimo.dataEmprestimo" name="dataEmprestimo" type="date" required>
+        </mat-form-field>
 
-    <!-- Data do empréstimo -->
-    <mat-form-field>
-      <input 
-        matInput 
-        type="date"
-        placeholder="Data do Empréstimo"
-        [(ngModel)]="emprestimo.dataEmprestimo" 
-        name="dataEmprestimo">
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Previsão de Devolução" [(ngModel)]="emprestimo.dataDevolucao" name="dataDevolucao" type="date" required>
+        </mat-form-field>
 
-    <!-- Data de devolução prevista -->
-    <mat-form-field>
-      <input 
-        matInput 
-        type="date"
-        placeholder="Data de Devolução"
-        [(ngModel)]="emprestimo.dataDevolucao" 
-        name="dataDevolucao">
-    </mat-form-field>
+        <mat-form-field>
+            <mat-label>Status</mat-label>
+            <mat-select [(ngModel)]="emprestimo.status" name="status" required>
+                <mat-option value="PENDENTE">Pendente</mat-option>
+                <mat-option value="DEVOLVIDO">Devolvido</mat-option>
+                <mat-option value="ATRASADO">Atrasado</mat-option>
+            </mat-select>
+        </mat-form-field>
 
-    <!-- Seleção de livro -->
-    <mat-form-field>
-      <mat-select 
-        placeholder="Livro"
-        [(ngModel)]="emprestimo.livro" 
-        name="livro">
-        <mat-option *ngFor="let livro of livros" [value]="livro">
-          {{livro.titulo}} — {{livro.autor}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+        <button mat-raised-button type="submit" color="primary">
+            Salvar
+        </button>
+        
+        <button mat-raised-button (click)="cancel()" type="button">
+            Cancelar
+        </button>
 
-    <!-- Seleção de cliente -->
-    <mat-form-field>
-      <mat-select 
-        placeholder="Cliente"
-        [(ngModel)]="emprestimo.cliente" 
-        name="cliente">
-        <mat-option *ngFor="let cliente of clientes" [value]="cliente">
-          {{cliente.cliNome}} — CPF: {{cliente.cliCpf}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-  </form>
-
-  <button mat-raised-button (click)="createEmprestimo()" color="primary">
-    Salvar
-  </button>
-  
-  <button mat-raised-button (click)="cancel()">
-    Cancelar
-  </button>
+    </form>
 </mat-card>

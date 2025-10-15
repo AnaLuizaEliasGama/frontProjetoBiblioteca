@@ -10,14 +10,14 @@ import { HeaderComponent } from './components/template/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 //pegar http 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -26,17 +26,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './views/home/home.component';
-import { EmprestimoUpdateComponent } from './components/emprestimo/emprestimo-update/emprestimo-update.component';
-import { RedDirective } from './directives/red.directive';
-import { empres } from 
 
-//importações
-import { EmprestimoReadComponent } from './components/emprestimo/emprestimo-read/emprestimo-read.component';
+// Direitos e imports que não são de Empréstimo
+import { RedDirective } from './directives/red.directive';
+
+
+//importações (Somente as que NÃO SÃO de Empréstimo)
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
-// import { EmprestimoUpdateComponent } from './components/emprestimo/emprestimo-update/emprestimo-update.component'; <-- LINHA DUPLICADA REMOVIDA
-import { EmprestimoDeleteComponent } from './components/emprestimo/emprestimo-delete/emprestimo-delete.component';
+
 import { FormaPagamentoReadComponent } from './components/formaPagamento/forma-pagamento-read/forma-pagamento-read.component';
 import { FormaPagamentoCrudComponent } from './views/forma-pagamento-crud/forma-pagamento-crud.component';
 import { FornecedorCrudComponent } from './views/fornecedor-crud/fornecedor-crud.component';
@@ -47,59 +46,60 @@ import { FornecedorReadComponent } from './components/fornecedor/fornecedor-read
 import { LivroReadComponent } from './components/livro/livro-read/livro-read.component';
 import { FormaPagamentoCreateComponent } from './components/formaPagamento/forma-pagamento-create/forma-pagamento-create.component';
 import { FormaPagamentoUpdateComponent } from './components/formaPagamento/forma-pagamento-update/forma-pagamento-update.component';
+import { EmprestimoCreateComponent } from './components/emprestimo/emprestimo-create/emprestimo-create.component';
+import { EmprestimoReadComponent } from './components/emprestimo/emprestimo-read/emprestimo-read.component';
+import { EmprestimoUpdateComponent } from './components/emprestimo/emprestimo-update/emprestimo-update.component';
 
 registerLocaleData(localePt)
 
 @NgModule({
-  declarations: [
-AppComponent,
-HeaderComponent,
-    FooterComponent,
-    NavComponent,
-    HomeComponent,
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavComponent,
+    HomeComponent,
+    RedDirective,
 
-    // EmprestimoCrudComponent, <-- DECLARAÇÃO REMOVIDA (não foi importada e gerou erro)
-
-    RedDirective,
-    EmprestimoCreateComponent,
-    EmprestimoReadComponent,
-    EmprestimoUpdateComponent,
-    EmprestimoDeleteComponent,
-    FormaPagamentoReadComponent,
-    FormaPagamentoCrudComponent,
-    FornecedorCrudComponent,
-    FornecedorCreateComponent,
-    LivroCrudComponent,
-    LivroCreateComponent,
-    FornecedorReadComponent,
-    LivroReadComponent,
-    FormaPagamentoCreateComponent,
-    FormaPagamentoUpdateComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    //precisamos declara os modulos de material importados
-    MatToolbarModule, 
-    MatSidenavModule,
-    MatListModule,
-    MatCardModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    HttpClientModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatSelectModule
-  ],
-  providers: [{
-    provide: LOCALE_ID,
-    useValue: 'pt-BR'
-  }],
-  bootstrap: [AppComponent]
+    // Componentes de CRUD (sem Empréstimo)
+    FormaPagamentoReadComponent,
+    FormaPagamentoCrudComponent,
+    FornecedorCrudComponent,
+    FornecedorCreateComponent,
+    LivroCrudComponent,
+    LivroCreateComponent,
+    FornecedorReadComponent,
+    LivroReadComponent,
+    FormaPagamentoCreateComponent,
+    FormaPagamentoUpdateComponent,
+    EmprestimoCreateComponent,
+    EmprestimoReadComponent,
+    EmprestimoUpdateComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    // Modulos de Material e HTTP
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    HttpClientModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSelectModule
+  ],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: 'pt-BR'
+  }],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,50 +1,54 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-//importando matSnackBar
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { Product } from './emprestimo.model';
+import { Emprestimo } from './emprestimo.model';
 
 @Injectable({
   providedIn: 'root'
 })
+export class EmprestimoService {
 
-export class ProductService {
-
-  baseUrl = "http://localhost:8080/produtos"
+  // URL base do recurso no seu backend (exemplo)
+  baseUrl = "http://localhost:8080/api/emprestimos"; 
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
-  showMessage(msg: string): void {
-    this.snackBar.open(msg, 'X',{
+  showMessage(msg: string, extraClass: string = ''): void {
+    this.snackBar.open(msg, 'X', {
       duration: 3000,
       horizontalPosition: "right",
-      verticalPosition: "top"
-    })
+      verticalPosition: "top",
+      panelClass: extraClass ? [extraClass] : undefined // Aplica a classe CSS
+    });
   }
 
-  create(product: Product): Observable<Product>{
-    return this.http.post<Product>(this.baseUrl, product)
+  // MÉTODO CREATE CORRIGIDO/ADICIONADO
+  create(emprestimo: Emprestimo): Observable<Emprestimo> {
+    return this.http.post<Emprestimo>(this.baseUrl, emprestimo);
   }
 
-  read(): Observable<Product[]>{
-    return this.http.get<Product[]>(this.baseUrl)
+  // MÉTODO READ CORRIGIDO
+  read(): Observable<Emprestimo[]> {
+    // Agora retorna Observable<Emprestimo[]>
+    return this.http.get<Emprestimo[]>(this.baseUrl); 
   }
 
-  readById(proId: string): Observable<Product>{
-    const url = `${this.baseUrl}/${proId}`
-    return this.http.get<Product>(url)
+  // MÉTODO READ BY ID (Já estava correto)
+  readById(id: string | number): Observable<Emprestimo> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<Emprestimo>(url);
   }
- 
-  update(product: Product): Observable<Product>{
-    const url = `${this.baseUrl}/${product.proId}`
-    return this.http.put<Product>(url, product)
+
+  // MÉTODO UPDATE (Já estava correto)
+  update(emprestimo: Emprestimo): Observable<Emprestimo> {
+    const url = `${this.baseUrl}/${emprestimo.id}`;
+    return this.http.put<Emprestimo>(url, emprestimo);
   }
   
-  delete(proId: number): Observable<Product>{    
-    const url = `${this.baseUrl}/${proId}`
-    return this.http.delete<Product>(url)
+  // MÉTODO DELETE (Adicionado para completar o CRUD)
+  delete(id: number): Observable<Emprestimo> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<Emprestimo>(url);
   }
-
-
-}  
+}

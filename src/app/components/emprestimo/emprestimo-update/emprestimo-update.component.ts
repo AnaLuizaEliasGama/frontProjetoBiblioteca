@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EmprestimoService } from '../emprestimo.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Emprestimo } from '../emprestimo.model';
-import { emprestimo } from'src/app/components/
-import { Fornecedor } from '../../fornecedor/fornecedor.model';
-import { FornecedorService } from '../../fornecedor/fornecedor.service';
-
 @Component({
   selector: 'app-emprestimo-update',
   templateUrl: './emprestimo-update.component.html',
@@ -12,34 +9,49 @@ import { FornecedorService } from '../../fornecedor/fornecedor.service';
 })
 export class EmprestimoUpdateComponent implements OnInit {
 
-  emprestimo!: Emprestimo;
-  fornecedores: Fornecedor[] = []
+  emprestimo: Emprestimo = {
+    dataDevolucao: '',
+    dataDevolucaoReal: null,
+    dataEmprestimo: '',
+    status: '',
+    valorMulta: 0,
+    clienteId: 0,
+    livroId: 0
+  };
 
-  constructor(private emprestimoService: EmprestimoService, 
-    private fornecedorService: FornecedorService,
-    private router: Router, 
-    private route: ActivatedRoute) {}
+  constructor(
+    private emprestimoService: EmprestimoService,
+    private router: Router,
+    private route: ActivatedRoute // Para pegar o ID da URL
+  ) { }
 
   ngOnInit(): void {
-    const proId = this.route.snapshot.paramMap.get('proId')
-    this.emprestimoService.readById(proId!).subscribe((emprestimo: Emprestimo) =>{
-      this.emprestimo = emprestimo
-    })
+    // Pega o 'id' da URL (ex: /emprestimos/update/1)
+    const id = this.route.snapshot.paramMap.get('id'); 
     
-    this.fornecedorService.read().subscribe(fornecedores => {
-      this.fornecedores = fornecedores
-    })
+    if (id) {
+        this.emprestimoService.readById(id).subscribe(emprestimo => {
+            this.emprestimo = emprestimo;
+        });
+    } else {
+        this.emprestimoService.showMessage('ID de Empréstimo não encontrado.', 'snackbar-error');
+        this.router.navigate(['/emprestimos']);
+    }
   }
 
   updateEmprestimo(): void {
-    this.emprestimoService.update(this.emprestimo).subscribe(() => {
-      this.emprestimoService.showMessage('Produto atualizado com sucesso!')
-      this.router.navigate(['/emprestimos'])
-    })
+    this.emprestimoService.update(this.emprestimo).subscribe({
+      next: () => {
+        this.emprestimoService.showMessage('Empréstimo atualizado com sucesso!');
+        this.router.navigate(['/emprestimos']);
+      },
+      error: (e) => {
+        this.emprestimoService.showMessage('Erro ao atualizar Empréstimo.', 'snackbar-error');
+      }
+    });
   }
 
   cancel(): void {
-    this.router.navigate(['/emprestimos'])
+    this.router.navigate(['/emprestimos']);
   }
-
 }
