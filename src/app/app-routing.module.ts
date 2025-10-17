@@ -7,6 +7,8 @@ import { FornecedorCreateComponent } from './components/fornecedor/fornecedor-cr
 import { LivroCrudComponent } from './views/livro-crud/livro-crud.component';
 import { FormaPagamentoCreateComponent } from './components/formaPagamento/forma-pagamento-create/forma-pagamento-create.component';
 import { FormaPagamentoUpdateComponent } from './components/formaPagamento/forma-pagamento-update/forma-pagamento-update.component';
+import { LivroUpdateComponent } from './components/livro/livro-update/livro-update.component';
+import { LivroCreateComponent } from './components/livro/livro-create/livro-create.component';
 
 //configuração para rotear entre as paginas na home
 const routes: Routes = [
@@ -23,6 +25,11 @@ const routes: Routes = [
     path: "fpagamentos/create",
     component: FormaPagamentoCreateComponent
   },
+
+  
+  { path: 'livros/update/:id',
+   component: LivroUpdateComponent },
+
   {
     path: "fpagamentos/update/:id",
     component: FormaPagamentoUpdateComponent
@@ -38,7 +45,11 @@ const routes: Routes = [
   {
     path: "livros",
     component: LivroCrudComponent
-  }
+  },
+
+{path: "livros/create",
+component: LivroCreateComponent
+}
 
 ];
 

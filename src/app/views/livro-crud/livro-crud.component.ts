@@ -16,7 +16,7 @@ export class LivroCrudComponent implements OnInit {
 
   // Criando botão de novo Livro ☻☻☻
   navigateToLivroCreate(): void{
-    this.router.navigate(['livro/create'])
+    this.router.navigate(['livros/create'])
   }
 
 

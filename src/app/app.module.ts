@@ -50,6 +50,7 @@ import { EmprestimoCreateComponent } from './components/emprestimo/emprestimo-cr
 import { EmprestimoReadComponent } from './components/emprestimo/emprestimo-read/emprestimo-read.component';
 import { EmprestimoUpdateComponent } from './components/emprestimo/emprestimo-update/emprestimo-update.component';
 import { EmprestimoCrudComponent } from './views/emprestimo-crud/emprestimo-crud.component';
+import { LivroUpdateComponent } from './components/livro/livro-update/livro-update.component';
 
 registerLocaleData(localePt)
 
@@ -76,7 +77,8 @@ registerLocaleData(localePt)
     EmprestimoCreateComponent,
     EmprestimoReadComponent,
     EmprestimoUpdateComponent,
-    EmprestimoCrudComponent
+    EmprestimoCrudComponent,
+    LivroUpdateComponent
   ],
   imports: [
     BrowserModule,
