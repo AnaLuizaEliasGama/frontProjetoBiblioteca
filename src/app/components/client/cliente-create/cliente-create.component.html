@@ -1,0 +1,45 @@
+<mat-card>
+        <mat-card-title>Novo Cadastro de Cliente</mat-card-title>
+        
+        <form (ngSubmit)="createCliente()">
+
+        
+            
+            <h2>Dados Pessoais</h2>
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput placeholder="ID Interno (cliId)" [(ngModel)]="cliente.cliId" name="cliId" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Nome Completo" [(ngModel)]="cliente.nome" name="nome" required>
+                </mat-form-field>
+            </div>
+
+    
+    
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput placeholder="CPF" [(ngModel)]="cliente.cpf" name="cpf" type="text" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="RG" [(ngModel)]="cliente.rg" name="rg" type="text">
+                </mat-form-field>
+            </div>
+    
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput placeholder="Data de Nascimento" [(ngModel)]="cliente.dataNascimento" name="dataNascimento" type="date" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-select placeholder="Sexo" [(ngModel)]="cliente.sexo" name="sexo">
+                        <mat-option value="M">Masculino</mat-option>
+                        <mat-option value="F">Feminino</mat-option>
+                        <mat-option value="O">Outro</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+    <mat-card-title>Editar Cliente</mat-card-title>
+
+    
+            <h2>Contato</h2>

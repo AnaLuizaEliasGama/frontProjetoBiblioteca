@@ -51,6 +51,10 @@ import { EmprestimoReadComponent } from './components/emprestimo/emprestimo-read
 import { EmprestimoUpdateComponent } from './components/emprestimo/emprestimo-update/emprestimo-update.component';
 import { EmprestimoCrudComponent } from './views/emprestimo-crud/emprestimo-crud.component';
 import { LivroUpdateComponent } from './components/livro/livro-update/livro-update.component';
+import { ClienteCreateComponent } from './components/client/cliente-create/cliente-create.component';
+import { ClienteCrudComponent } from './views/cliente-crud/cliente-crud.component';
+import { ClienteReadComponent } from './components/client/cliente-read/cliente-read.component';
+import { ClienteUpdateComponent } from './components/client/cliente-update/cliente-update.component';
 
 registerLocaleData(localePt)
 
@@ -78,7 +82,11 @@ registerLocaleData(localePt)
     EmprestimoReadComponent,
     EmprestimoUpdateComponent,
     EmprestimoCrudComponent,
-    LivroUpdateComponent
+    LivroUpdateComponent,
+    ClienteCreateComponent,
+    ClienteCrudComponent,
+    ClienteReadComponent,
+    ClienteUpdateComponent
   ],
   imports: [
     BrowserModule,
