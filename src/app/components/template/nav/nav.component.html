@@ -1,52 +1,48 @@
 <mat-sidenav-container class="container">
-    <mat-sidenav class="sidenav" mode="side" opened fixedInViewport="true" fixedTopGap="64">
+    <mat-sidenav #sidenav class="sidenav" mode="side" opened fixedInViewport="true" fixedTopGap="64">
+
         <mat-nav-list class="nav-list">
-            
-            <a mat-list-item routerLink="/">
-                <i class="material-icons">
-                    home
-                </i>
+
+            <a mat-list-item routerLink="/" routerLinkActive="ativo">
+                <mat-icon>home</mat-icon>
                 Início
             </a>
-            
-            <a mat-list-item routerLink="/clientes">
-                <i class="material-icons">
-                    people
-                </i>
+
+            <a mat-list-item routerLink="/clientes" routerLinkActive="ativo">
+                <mat-icon>people</mat-icon>
                 Clientes
             </a>
 
-            <a mat-list-item routerLink="/emprestimos">
-                <i class="material-icons">
-                    storefront
-                </i>
+            <a mat-list-item routerLink="/emprestimos" routerLinkActive="ativo">
+                <mat-icon>storefront</mat-icon>
                 Emprestimos
             </a>
-            
-            <a mat-list-item routerLink="/fpagamentos">
-                <i class="material-icons">
-                    payments
-                </i>
+
+            <a mat-list-item routerLink="/fpagamentos" routerLinkActive="ativo">
+                <mat-icon>payments</mat-icon>
                 Forma de Pagamento
             </a>
-            
-            <a mat-list-item routerLink="/fornecedores">
-                <i class="material-icons">
-                    person
-                </i>
+
+            <a mat-list-item routerLink="/fornecedores" routerLinkActive="ativo">
+                <mat-icon>person</mat-icon>
                 Fornecedor
             </a>
-            
-            <a mat-list-item routerLink="/livros">
-                <i class="material-icons">
-                    book
-                </i>
+
+            <a mat-list-item routerLink="/livros" routerLinkActive="ativo">
+                <mat-icon>book</mat-icon>
                 Livro
             </a>
 
         </mat-nav-list>
     </mat-sidenav>
+
     <mat-sidenav-content class="content">
+
+        <mat-toolbar color="primary">
+            <span>Título do seu Projeto</span>
+        </mat-toolbar>
+
         <router-outlet></router-outlet>
+
     </mat-sidenav-content>
 </mat-sidenav-container>

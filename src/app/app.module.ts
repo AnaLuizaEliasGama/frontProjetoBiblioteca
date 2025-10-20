@@ -26,6 +26,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './views/home/home.component';
+import { MatIconModule } from '@angular/material/icon';
+
 
 // Direitos e imports que não são de Empréstimo
 import { RedDirective } from './directives/red.directive';
@@ -86,7 +88,8 @@ registerLocaleData(localePt)
     ClienteCreateComponent,
     ClienteCrudComponent,
     ClienteReadComponent,
-    ClienteUpdateComponent
+    ClienteUpdateComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -106,7 +109,8 @@ registerLocaleData(localePt)
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule, 
+    MatIconModule
   ],
   providers: [{
     provide: LOCALE_ID,
