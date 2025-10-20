@@ -6,7 +6,7 @@ export interface Cliente {
     id?: number; 
     
     // Campos Primitivos (usando os nomes do @JsonProperty)
-    cliId: string;
+   
     nome: string; // Mapeia para cliNome
     cpf: string; // Mapeia para cliCpf
     rg: string;

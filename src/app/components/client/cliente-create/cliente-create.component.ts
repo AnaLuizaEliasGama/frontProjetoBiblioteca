@@ -21,7 +21,6 @@ export class ClienteCreateComponent implements OnInit {
     // Inicialização do Objeto Cliente, Contato e Endereco...
     cliente: Cliente = {
         // Campos Primitivos
-        cliId: '',
         nome: '',
         cpf: '',
         rg: '',

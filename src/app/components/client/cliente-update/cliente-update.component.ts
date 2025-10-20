@@ -15,7 +15,7 @@ export class ClienteUpdateComponent implements OnInit {
 
   cliente: Cliente = {
     // Inicialização padrão (será preenchida pelo readById)
-    cliId: '', nome: '', cpf: '', rg: '', dataNascimento: '', sexo: '', observacoes: '',
+    nome: '', cpf: '', rg: '', dataNascimento: '', sexo: '', observacoes: '',
     contato: {} as Contato,
     endereco: {} as Endereco
   };
