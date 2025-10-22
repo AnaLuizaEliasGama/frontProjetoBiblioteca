@@ -9,7 +9,7 @@
             <div class="form-group">
          
                 <mat-form-field>
-                    <input matInput placeholder="Nome Completo" [(ngModel)]="cliente.nome" name="nome" required>
+                    <input matInput placeholder="Nome Completo" [(ngModel)]="cliente.cliNome" name="nome" required>
                 </mat-form-field>
             </div>
 
@@ -17,10 +17,10 @@
     
             <div class="form-group">
                 <mat-form-field>
-                    <input matInput placeholder="CPF" [(ngModel)]="cliente.cpf" name="cpf" type="text" required>
+                    <input matInput placeholder="CPF" [(ngModel)]="cliente.cliCpf" name="cpf" type="text" required>
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput placeholder="RG" [(ngModel)]="cliente.rg" name="rg" type="text">
+                    <input matInput placeholder="RG" [(ngModel)]="cliente.cliRg" name="rg" type="text">
                 </mat-form-field>
             </div>
 
@@ -36,10 +36,10 @@
     
             <div class="form-group">
                 <mat-form-field>
-                    <input matInput placeholder="Data de Nascimento" [(ngModel)]="cliente.dataNascimento" name="dataNascimento" type="date" required>
+                    <input matInput placeholder="Data de Nascimento" [(ngModel)]="cliente.cliDataNascimento" name="dataNascimento" type="date" required>
                 </mat-form-field>
                 <mat-form-field>
-                    <mat-select placeholder="Sexo" [(ngModel)]="cliente.sexo" name="sexo">
+                    <mat-select placeholder="Sexo" [(ngModel)]="cliente.cliSexo" name="sexo">
                         <mat-option value="M">Masculino</mat-option>
                         <mat-option value="F">Feminino</mat-option>
                         <mat-option value="O">Outro</mat-option>
