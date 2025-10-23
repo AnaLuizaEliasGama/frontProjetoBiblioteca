@@ -1,6 +1,26 @@
-
-<!-- conseguimos interpolar o title que vem do arquivo app.component.ts como uma variavel
-<h2>Está pagina é {{ title }}</h2>-->
-<app-header></app-header>
-<app-nav></app-nav>
-<app-footer></app-footer>
+<!-- src/app/app.component.html -->
+<div class="app-container">
+    <header>
+      <div class="logo">
+        <h1>📚 Biblioteca Luluzística</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a routerLink="/inicio" routerLinkActive="active">🏠 Início</a></li>
+          <li><a routerLink="/clientes" routerLinkActive="active">👥 Clientes</a></li>
+          <li><a routerLink="/livros" routerLinkActive="active">📖 Livros</a></li>
+          <li><a routerLink="/fornecedores" routerLinkActive="active">📦 Fornecedores</a></li>
+          <li><a routerLink="/pagamentos" routerLinkActive="active">💰 Pagamentos</a></li>
+          <li><a routerLink="/emprestimos" routerLinkActive="active">📥 Empréstimos</a></li>
+        </ul>
+      </nav>
+    </header>
+  
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  
+    <footer>
+      <p>Desenvolvido por Ana Luiza Gama</p>
+    </footer>
+  </div>

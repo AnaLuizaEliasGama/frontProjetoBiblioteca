@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.scss */
+
 @use '@angular/material' as mat;
 
 // ----------------------------------------------------
@@ -8,52 +9,103 @@
 @include mat.core();
 
 // ----------------------------------------------------
-// 2. DEFINIÇÃO DO TEMA ROSA DESERTO (Ordem Corrigida)
+// 2. DEFINIÇÃO DO TEMA LÚDICO (Rosa Deserto + Azul Céu)
 // ----------------------------------------------------
 
-// Definição da Paleta Primary (Rosa Deserto)
-$rosa-deserto-app-primary: mat.define-palette((50: #F3EBE8,
-            100: #E3D1C9,
-            200: #D3B7A8,
-            300: #C39D87,
-            400: #B78A71,
-            500: #A8765A, // Rosa Deserto Principal
-            600: #9B6C53,
-            700: #8D614A,
-            800: #7F5641,
-            900: #644331,
-            A100: #FFE1D3,
-            A200: #FFB09C,
-            A400: #FF7F65,
-            A700: #FF664C,
-            contrast: (50: rgba(black, 0.87),
-                100: rgba(black, 0.87),
-                200: rgba(black, 0.87),
-                300: rgba(black, 0.87),
-                400: rgba(black, 0.87),
-                500: white,
-                600: white,
-                700: white,
-                800: white,
-                900: white,
-                A100: rgba(black, 0.87),
-                A200: rgba(black, 0.87),
-                A400: white,
-                A700: white,
-            )));
+// ----------------------------------------------------
+// 2.1. Definição das Paletas de Cores
+// ----------------------------------------------------
 
-// Definição das Paletas Accent (Secundária) e Warn (Alerta)
-$rosa-deserto-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$rosa-deserto-app-warn: mat.define-palette(mat.$red-palette);
+// Paleta Primary: Rosa Deserto (suave)
+$ludico-primary-palette: mat.define-palette((
+    50: #F3EBE8,
+    100: #E3D1C9,
+    200: #D3B7A8,
+    300: #C39D87,
+    400: #B78A71,
+    500: #A8765A, // Rosa Deserto Principal
+    600: #9B6C53,
+    700: #8D614A,
+    800: #7F5641,
+    900: #644331,
+    A100: #FFE1D3,
+    A200: #FFB09C,
+    A400: #FF7F65,
+    A700: #FF664C,
+    contrast: (
+        50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: rgba(black, 0.87),
+        400: rgba(black, 0.87),
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white,
+        A100: rgba(black, 0.87),
+        A200: rgba(black, 0.87),
+        A400: white,
+        A700: white,
+    )
+));
 
-// Criação do Objeto do Tema (Tema Claro)
-$rosa-deserto-app-theme: mat.define-light-theme((color: (primary: $rosa-deserto-app-primary,
-                accent: $rosa-deserto-app-accent,
-                warn: $rosa-deserto-app-warn,
-            )));
+// Paleta Accent: Azul Céu (Simplificado para a paleta Light Blue do Material)
+$ludico-accent-palette: mat.define-palette(mat.$light-blue-palette);
 
-// Aplicação do Tema Customizado (AGORA ESTÁ POR ÚLTIMO)
-@include mat.all-component-themes($rosa-deserto-app-theme);
+// Paleta Warn: Vermelho Suave
+$ludico-warn-palette: mat.define-palette(mat.$red-palette);
+
+// ----------------------------------------------------
+// ----------------------------------------------------
+// 2.2. Definição da Tipografia
+// SIMPLIFICADA: Usando a tipografia padrão do Material para isolar o erro.
+// ----------------------------------------------------
+
+$ludico-typography: mat.define-typography-config(); 
+
+// Se a compilação falhar novamente, tente:
+// $ludico-typography: mat.define-typography-config(null);
+
+// Você pode tentar comentar temporariamente também as linhas 137 e 138 que usam 'Great Vibes':
+// // Fonte cursiva para títulos
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// .mat-card-title {
+//     // font-family: 'Great Vibes', cursive !important; // Comente esta linha
+//     font-weight: 400;
+// }
+
+// // Logo no header
+// .header .logo {
+//     // font-family: 'Great Vibes', cursive !important; // Comente esta linha
+//     font-size: 2.5rem;
+// }
+    
+// ----------------------------------------------------
+// 2.3. Definição e Aplicação do Tema
+// ----------------------------------------------------
+
+// Definindo o tema Light
+$tema-ludico-app-theme: mat.define-light-theme((
+    color: (
+        primary: $ludico-primary-palette,
+        accent: $ludico-accent-palette,
+        warn: $ludico-warn-palette,
+    ),
+    typography: $ludico-typography // Usa a variável de tipografia definida acima
+));
+
+
+// Aplicação do Tema Customizado para todos os componentes
+@include mat.all-component-themes($tema-ludico-app-theme);
+
+// Aplicação da Tipografia Global (Garante que a fonte base seja usada em <body> e em elementos não Material)
+@include mat.typography-hierarchy($ludico-typography);
+
 
 // ----------------------------------------------------
 // 3. ESTILOS GLOBAIS (FONTE, BACKGROUND E TRANSPARÊNCIA)
@@ -66,54 +118,184 @@ body {
 
 body {
     margin: 0;
-
-    /* Configuração da Fonte "Princesa" */
-    font-family: 'Playfair Display', serif;
-
-    /* Caminho da Imagem Corrigido */
+    // Removido o 'font-family' duplicado, pois já é aplicado pelo mat.typography-hierarchy
     background-image: url('/assets/img/biblioteca.jpg');
     background-size: cover;
-    background-attachment: fixed;
-
-    /* Cor de fallback Rosa Deserto */
+    background-position: center;
+    background-attachment: fixed; // Efeito de paralaxe em desktop
     background-color: #F3EBE8;
-
-    /* Sintaxe de cor corrigida */
     color: rgba(0, 0, 0, 0.87);
 }
 
-/* NOVO: Garante que o container principal fique transparente */
+// Garante que o container principal fique transparente
 mat-sidenav-container {
-    background: transparent !important;
+    background: transparent;
 }
 
-/* Garante que componentes do Material usem Roboto onde a fonte elegante atrapalha a leitura (ex: caixas de input) */
-.mat-typography {
-    font-family: 'Playfair Display', serif, Roboto, "Helvetica Neue", sans-serif;
+// Fonte cursiva para títulos
+h1,
+h2,
+h3,
+h4,
+h5,
+.mat-card-title {
+    font-family: 'Great Vibes', cursive !important;
+    font-weight: 400;
 }
 
-/* Classes CSS globais */
-.red {
-    color: #e35e6b;
+// Logo no header
+.header .logo {
+    font-family: 'Great Vibes', cursive !important;
+    font-size: 2.5rem;
 }
 
-.v-middle {
-    vertical-align: middle;
+// Botões estilizados
+.btn-ludico {
+    background: linear-gradient(135deg, #8B4513, #A0522D);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
 
-    /* Aplica a fonte cursiva em elementos de TÍTULO (h1, h2, etc.) */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        .mat-card-title {
-            font-family: 'Great Vibes', cursive !important;
-            font-weight: 400;
-        }
-    
-        /* Opcional: Se o seu Header/Logo for um 'span' ou 'a' com a classe 'logo' */
-        .header .logo {
-            font-family: 'Great Vibes', cursive !important;
-            font-size: 2.5rem;
-        }
+.btn-ludico:hover:not(:disabled) {
+    background: linear-gradient(135deg, #A0522D, #8B4513);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+.btn-ludico:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+// Cards estilizados
+.card-ludico {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+// Tabelas estilizadas
+.table-ludico {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.table-ludico th,
+.table-ludico td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-ludico th {
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #555;
+}
+
+.table-ludico tr:hover {
+    background: #f8f9fa;
+}
+
+// Formulários estilizados
+.form-group-ludico {
+    margin-bottom: 1rem;
+}
+
+.form-group-ludico label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-control-ludico {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-control-ludico:focus {
+    outline: none;
+    border-color: #8B4513;
+    box-shadow: 0 0 0 3px rgba(139,69,19,0.1);
+}
+
+.form-control-ludico::placeholder {
+    color: #999;
+}
+
+.error-ludico {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+// Estados vazios
+.empty-state-ludico {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.empty-state-ludico mat-icon {
+    font-size: 3rem;
+    color: #999;
+    margin-bottom: 1rem;
+}
+
+// Animações
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+// Responsividade para telas pequenas
+@media (max-width: 768px) {
+    body {
+        // Fallback: Evita paralaxe em mobile para melhor performance
+        background-attachment: scroll;
+    }
+
+    .btn-ludico {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .card-ludico {
+        padding: 1rem;
+    }
+
+    h1, h2, h3, h4, h5 {
+        font-size: 1.5rem;
+    }
 }
