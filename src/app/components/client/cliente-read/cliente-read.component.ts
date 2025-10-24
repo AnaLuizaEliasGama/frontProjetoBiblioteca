@@ -1,11 +1,8 @@
-// src/app/components/client/cliente-read/cliente-read.component.ts
+import { ClienteService } from './../cliente.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
-import { ClienteService } from '../cliente.service'
-import { Cliente } from './../cliente.model';
-
-
-
+import { Router } from '@angular/router';
+import { Cliente } from '../cliente.model';
+import { ClientService } from '../../client.service';
 
 @Component({
   selector: 'app-cliente-read',
@@ -13,9 +10,13 @@ import { Cliente } from './../cliente.model';
   styleUrls: ['./cliente-read.component.css']
 })
 export class ClienteReadComponent implements OnInit {
+deleteCliente(arg0: any) {
+throw new Error('Method not implemented.');
+}
 
   clientes: Cliente[] = [];
-  displayedColumns = ['cliId', 'cliNome', 'cliCpf', 'cliAtivo', 'acoes'];
+
+  displayedColumns = ['id', 'cliId', 'cliNome', 'cliCpf', 'cliRg', 'cliDataNascimento', 'cliSexo', 'cliAtivo', 'acoes'];
 
   constructor(
     private clienteService: ClienteService,
@@ -23,8 +24,17 @@ export class ClienteReadComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.clienteService.read().subscribe(clientes => {
-      this.clientes = clientes;
+    this.carregarClientes();
+  }
+
+  carregarClientes(): void {
+    this.clienteService.read().subscribe({
+      next: (clientes: Cliente[]) => {
+        this.clientes = clientes;
+      },
+      error: (e: any) => {
+        this.clienteService.handleError(e);
+      }
     });
   }
 
@@ -32,14 +42,18 @@ export class ClienteReadComponent implements OnInit {
     this.router.navigate(['/clientes/create']);
   }
 
-  deleteCliente(cliId: string): void {  // ✅ Agora recebe string
-    if (confirm('Deseja realmente excluir este cliente?')) {
-      this.clienteService.delete(cliId).subscribe({
+  editarCliente(id: number): void {
+    this.router.navigate([`/clientes/update/${id}`]);
+  }
+
+  removerCliente(id: number): void {
+    if (confirm('Tem certeza que deseja remover este cliente?')) {
+      this.clienteService.delete(id).subscribe({
         next: () => {
-          this.clienteService.showMessage('Cliente excluído com sucesso!');
-          this.ngOnInit(); // Recarrega a lista
+          this.clienteService.showMessage('Cliente removido com sucesso!');
+          this.carregarClientes();
         },
-        error: (e) => {
+        error: (e: any) => {
           this.clienteService.handleError(e);
         }
       });

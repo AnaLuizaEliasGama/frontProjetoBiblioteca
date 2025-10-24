@@ -1,9 +1,8 @@
-
-// src/app/client/cliente-create/cliente-create.component.ts
+import { ClienteService } from './../cliente.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cliente } from './../cliente.model';
-import { ClienteService } from '../cliente.service';
+import { ClientService } from '../../client.service';
+import { Cliente } from '../cliente.model';
 
 @Component({
   selector: 'app-cliente-create',
@@ -13,6 +12,7 @@ import { ClienteService } from '../cliente.service';
 export class ClienteCreateComponent {
 
   cliente: Cliente = {
+    id: 0,
     cliId: '',
     cliNome: '',
     cliCpf: '',
@@ -25,18 +25,18 @@ export class ClienteCreateComponent {
   };
 
   constructor(
-    private clienteService: ClienteService,
+    private ClienteService: ClienteService,
     private router: Router
   ) { }
 
   createCliente(): void {
-    this.clienteService.create(this.cliente).subscribe({
-      next: () => {
-        this.clienteService.showMessage('Cliente cadastrado com sucesso!');
+    this.ClienteService.create(this.cliente).subscribe({
+      next: (clienteSalvo) => {
+        this.ClienteService.showMessage('Cliente cadastrado com sucesso!');
         this.router.navigate(['/clientes']);
       },
-      error: (e) => {
-        this.clienteService.handleError(e);
+      error: (e: any) => {
+        this.ClienteService.handleError(e);
       }
     });
   }

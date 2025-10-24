@@ -1,8 +1,8 @@
-// src/app/client/cliente-update/cliente-update.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClienteService } from '../cliente.service';
 import { Cliente } from '../cliente.model';
+import { ClientService } from '../../client.service';
+import { ClienteService } from '../cliente.service';
 
 @Component({
   selector: 'app-cliente-update',
@@ -12,6 +12,7 @@ import { Cliente } from '../cliente.model';
 export class ClienteUpdateComponent implements OnInit {
 
   cliente: Cliente = {
+    id: 0,
     cliId: '',
     cliNome: '',
     cliCpf: '',
@@ -20,7 +21,7 @@ export class ClienteUpdateComponent implements OnInit {
     cliSexo: '',
     cliObservacoes: '',
     cliAtivo: true,
-    cliDataCadastro: new Date().toISOString().split('T')[0]
+    cliDataCadastro: ''
   };
 
   constructor(
@@ -30,21 +31,26 @@ export class ClienteUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const cliId = this.route.snapshot.paramMap.get('id');
-    if (cliId) {
-      this.clienteService.readById(cliId).subscribe(cliente => {
-        this.cliente = cliente;
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.clienteService.readById(+id).subscribe({
+        next: (cliente: Cliente) => {
+          this.cliente = cliente;
+        },
+        error: (e: any) => {
+          this.clienteService.handleError(e);
+        }
       });
     }
   }
 
   updateCliente(): void {
     this.clienteService.update(this.cliente).subscribe({
-      next: () => {
+      next: (clienteAtualizado) => {
         this.clienteService.showMessage('Cliente atualizado com sucesso!');
         this.router.navigate(['/clientes']);
       },
-      error: (e) => {
+      error: (e: any) => {
         this.clienteService.handleError(e);
       }
     });

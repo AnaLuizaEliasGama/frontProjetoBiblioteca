@@ -1,26 +1,48 @@
-<!-- src/app/app.component.html -->
-<div class="app-container">
-    <header>
-      <div class="logo">
-        <h1>📚 Biblioteca Luluzística</h1>
+<div class="app-container mat-typography">
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-content">
+      <div class="logo-section">
+        <mat-icon class="logo-icon">menu_book</mat-icon>
+        <h1 class="app-title">📚 Biblioteca Luluzística</h1>
       </div>
-      <nav>
-        <ul>
-          <li><a routerLink="/inicio" routerLinkActive="active">🏠 Início</a></li>
-          <li><a routerLink="/clientes" routerLinkActive="active">👥 Clientes</a></li>
-          <li><a routerLink="/livros" routerLinkActive="active">📖 Livros</a></li>
-          <li><a routerLink="/fornecedores" routerLinkActive="active">📦 Fornecedores</a></li>
-          <li><a routerLink="/pagamentos" routerLinkActive="active">💰 Pagamentos</a></li>
-          <li><a routerLink="/emprestimos" routerLinkActive="active">📥 Empréstimos</a></li>
-        </ul>
+      
+      <nav class="main-nav">
+        <a mat-button routerLink="/inicio" routerLinkActive="active-link">
+          <mat-icon>home</mat-icon>
+          Início
+        </a>
+        <a mat-button routerLink="/clientes" routerLinkActive="active-link">
+          <mat-icon>people</mat-icon>
+          Clientes
+        </a>
+        <a mat-button routerLink="/livros" routerLinkActive="active-link">
+          <mat-icon>book</mat-icon>
+          Livros
+        </a>
+        <a mat-button routerLink="/fornecedores" routerLinkActive="active-link">
+          <mat-icon>business</mat-icon>
+          Fornecedores
+        </a>
+        <a mat-button routerLink="/pagamentos" routerLinkActive="active-link">
+          <mat-icon>payments</mat-icon>
+          Pagamentos
+        </a>
+        <a mat-button routerLink="/emprestimos" routerLinkActive="active-link">
+          <mat-icon>storefront</mat-icon>
+          Empréstimos
+        </a>
       </nav>
-    </header>
-  
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  
-    <footer>
-      <p>Desenvolvido por Ana Luiza Gama</p>
-    </footer>
-  </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="app-main">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>
+  </footer>
+</div>
