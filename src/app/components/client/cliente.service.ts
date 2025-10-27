@@ -27,7 +27,7 @@ export class ClienteService {
     });
   }
 
-  handleError(e: HttpErrorResponse): Observable<any> {
+  handleError(e: HttpErrorResponse): Observable<never> {
     console.error(e);
     const errorMessage = e.error?.message || 'Ocorreu um erro desconhecido ao processar o Cliente.';
     this.showMessage(errorMessage, 'snackbar-error');

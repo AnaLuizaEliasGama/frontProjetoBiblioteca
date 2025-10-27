@@ -58,6 +58,7 @@ import { ClienteCreateComponent } from './components/client/cliente-create/clien
 import { ClienteCrudComponent } from './views/cliente-crud/cliente-crud.component';
 import { ClienteReadComponent } from './components/client/cliente-read/cliente-read.component';
 import { ClienteUpdateComponent } from './components/client/cliente-update/cliente-update.component';
+import { FornecedorUpdateComponent } from './components/fornecedor/fornecedor-update/fornecedor-update.component';
 
 registerLocaleData(localePt)
 
@@ -90,6 +91,7 @@ registerLocaleData(localePt)
     ClienteCrudComponent,
     ClienteReadComponent,
     ClienteUpdateComponent,
+    FornecedorUpdateComponent,
     
   ],
   imports: [

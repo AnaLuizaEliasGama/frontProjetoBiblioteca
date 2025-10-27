@@ -1,0 +1,113 @@
+<mat-card class="mat-elevation-z3">
+    <mat-card-title>
+        <i class="material-icons">
+            local_shipping
+        </i>
+        Atualizar Fornecedor
+    </mat-card-title>
+    
+    <mat-card-content>
+        <form *ngIf="fornecedor"> 
+
+            <mat-form-field appearance="fill">
+                <mat-label>ID</mat-label>
+                <input matInput [ngModel]="fornecedor.forId" name="forId" disabled>
+            </mat-form-field>
+            
+            <h3>Dados do Fornecedor</h3>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Nome Fantasia</mat-label>
+                <input matInput [(ngModel)]="fornecedor.forNomeFantasia" name="forNomeFantasia" required>
+            </mat-form-field>
+
+            <div class="row-fields">
+                <mat-form-field appearance="outline">
+                    <mat-label>CNPJ</mat-label>
+                    <input matInput [(ngModel)]="fornecedor.forCnpj" name="forCnpj" required>
+                    </mat-form-field>
+    
+                <mat-form-field appearance="outline">
+                    <mat-label>Razão Social</mat-label>
+                    <input matInput [(ngModel)]="fornecedor.forRazaoSocial" name="forRazaoSocial" required>
+                </mat-form-field>
+            </div>
+
+
+            <h3>Endereço</h3>
+            <div class="row-fields">
+                <mat-form-field appearance="outline" class="flex-grow">
+                    <mat-label>Rua</mat-label>
+                    <input matInput [(ngModel)]="fornecedor.endRua" name="endRua" required>
+                </mat-form-field>
+    
+                <mat-form-field appearance="outline" class="small-field">
+                    <mat-label>Número</mat-label>
+                    <input matInput [(ngModel)]="fornecedor.endNumero" name="endNumero" required>
+                </mat-form-field>
+            </div>
+            
+            <div class="row-fields">
+                <mat-form-field appearance="outline" class="flex-grow">
+                    <mat-label>Cidade</mat-label>
+                    <input matInput [(ngModel)]="fornecedor.endCidade" name="endCidade" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="medium-field">
+                    <mat-label>CEP</mat-label>
+                    <input matInput [(ngModel)]="fornecedor.endCep" name="endCep" required>
+                </mat-form-field>
+    
+                <mat-form-field appearance="outline" class="small-field">
+                    <mat-label>Estado (UF)</mat-label>
+                    <input matInput [(ngModel)]="fornecedor.endEstado" name="endEstado" required>
+                </mat-form-field>
+            </div>
+
+
+            <h3>Contatos</h3>
+            <div class="row-fields">
+                <mat-form-field appearance="outline">
+                    <mat-label>Celular</mat-label>
+                    <input matInput [(ngModel)]="fornecedor.conCelular" name="conCelular" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Telefone Comercial</mat-label>
+                    <input matInput [(ngModel)]="fornecedor.conTelefoneComercial" name="conTelefoneComercial">
+                </mat-form-field>
+            </div>
+            
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" [(ngModel)]="fornecedor.conEmail" name="conEmail" required>
+            </mat-form-field>
+
+        </form>
+
+        <div *ngIf="!fornecedor">
+            <p>Carregando dados do fornecedor...</p>
+        </div>
+        
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button 
+            (click)="updateFornecedor()" 
+            color="primary"
+            [disabled]="!fornecedor"> 
+            <i class="material-icons">
+                save
+            </i>
+            Salvar
+        </button>
+        
+        <button mat-raised-button 
+            (click)="cancel()" 
+            color="warn">
+            <i class="material-icons">
+                cancel
+            </i>
+            Cancelar
+        </button>
+    </mat-card-actions>
+</mat-card>
