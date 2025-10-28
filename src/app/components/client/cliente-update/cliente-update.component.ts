@@ -13,7 +13,6 @@ export class ClienteUpdateComponent implements OnInit {
 
   cliente: Cliente = {
     id: 0,
-    cliId: '',
     cliNome: '',
     cliCpf: '',
     cliRg: '',

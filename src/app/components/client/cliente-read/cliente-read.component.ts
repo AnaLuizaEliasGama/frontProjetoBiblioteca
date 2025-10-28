@@ -16,7 +16,7 @@ throw new Error('Method not implemented.');
 
   clientes: Cliente[] = [];
 
-  displayedColumns = ['id', 'cliId', 'cliNome', 'cliCpf', 'cliRg', 'cliDataNascimento', 'cliSexo', 'cliAtivo', 'acoes'];
+  displayedColumns = ['id', 'cliNome', 'cliCpf', 'cliRg', 'cliDataNascimento', 'cliSexo', 'cliAtivo', 'acoes'];
 
   constructor(
     private clienteService: ClienteService,

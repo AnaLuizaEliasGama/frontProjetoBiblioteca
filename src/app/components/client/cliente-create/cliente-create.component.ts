@@ -1,19 +1,20 @@
-import { ClienteService } from './../cliente.service';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { ClientService } from '../../client.service';
-import { Cliente } from '../cliente.model';
+import { Router } from "@angular/router";
+import { Cliente } from "../cliente.model";
+import { ClienteService } from "../cliente.service";
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-cliente-create',
-  templateUrl: './cliente-create.component.html',
+  selector: 'app-cliente-create,',
+  templateUrl: './cliente-create.component.html', 
   styleUrls: ['./cliente-create.component.css']
+
 })
+
+
 export class ClienteCreateComponent {
 
   cliente: Cliente = {
-    id: 0,
-   
+    id: 0,       // Mantenha o id
     cliNome: '',
     cliCpf: '',
     cliRg: '',
