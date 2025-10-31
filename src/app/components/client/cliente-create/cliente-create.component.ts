@@ -15,6 +15,7 @@ export class ClienteCreateComponent {
 
   cliente: Cliente = {
     id: 0,       // Mantenha o id
+    version: 0,
     cliNome: '',
     cliCpf: '',
     cliRg: '',

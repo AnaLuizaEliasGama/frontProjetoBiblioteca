@@ -1,6 +1,7 @@
 // src/app/models/cliente.model.ts
 export interface Cliente {
-  id?: number;          // ID gerado pelo banco (auto incremento)
+  id?: number;      // << ADICIONE ISTO   // ID gerado pelo banco (auto incremento) 
+  version?: number; // adicionado
   cliNome: string;     // Nome completo do cliente
   cliCpf: string;      // CPF do cliente
   cliRg?: string;      // RG do cliente (opcional)

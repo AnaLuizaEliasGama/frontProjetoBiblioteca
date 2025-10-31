@@ -1,57 +1,81 @@
-<!-- src/app/client/cliente-update/cliente-update.component.html -->
-<div class="container">
-    <h2>Editar Cliente</h2>
-    
-    <form>
-      <div class="form-group">
-        <label>ID:</label>
-        <input type="text" [(ngModel)]="cliente.id" readonly>
-    </div>
-    
-      
-      <div class="form-group">
-        <label>Nome:</label>
-        <input type="text" [(ngModel)]="cliente.cliNome">
-      </div>
-      
-      <div class="form-group">
-        <label>CPF:</label>
-        <input type="text" [(ngModel)]="cliente.cliCpf">
-      </div>
-      
-      <div class="form-group">
-        <label>RG:</label>
-        <input type="text" [(ngModel)]="cliente.cliRg">
-      </div>
-      
-      <div class="form-group">
-        <label>Data de Nascimento:</label>
-        <input type="date" [(ngModel)]="cliente.cliDataNascimento">
-      </div>
-      
-      <div class="form-group">
-        <label>Sexo:</label>
-        <select [(ngModel)]="cliente.cliSexo">
-          <option value="">Selecione</option>
-          <option value="M">Masculino</option>
-          <option value="F">Feminino</option>
-          <option value="O">Outro</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label>Observações:</label>
-        <textarea [(ngModel)]="cliente.cliObservacoes"></textarea>
-      </div>
-      
-      <div class="form-group">
-        <label>Ativo:</label>
-        <input type="checkbox" [(ngModel)]="cliente.cliAtivo">
-      </div>
-      
-      <div class="form-actions">
-        <button type="button" (click)="updateCliente()">Atualizar</button>
-        <button type="button" (click)="cancel()">Cancelar</button>
-      </div>
+<script src="https://cdn.tailwindcss.com"></script>
+<div class="cliente-update-container p-6 bg-white rounded-lg shadow-2xl mx-auto max-w-xl mt-10 font-sans border border-gray-100">
+
+    <h2 class="text-3xl font-extrabold mb-8 text-indigo-700 border-b pb-2">Detalhes do Cliente</h2>
+
+    <form *ngIf="cliente" class="space-y-5"> 
+        
+        <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700">ID:</label>
+            <input 
+                type="text" 
+                name="id" 
+                class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm bg-gray-100 cursor-not-allowed p-3"
+                [(ngModel)]="cliente.id" 
+                readonly> </div>
+
+        <input type="hidden" name="version" [(ngModel)]="cliente.version"> <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700">Nome:</label>
+            <input type="text" [(ngModel)]="cliente.cliNome" name="cliNome" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
+        
+        <div class="form-group grid grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">CPF:</label>
+                <input type="text" [(ngModel)]="cliente.cliCpf" name="cliCpf" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">RG:</label>
+                <input type="text" [(ngModel)]="cliente.cliRg" name="cliRg" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3">
+            </div>
+        </div>
+        
+        <div class="form-group grid grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Data de Nascimento:</label>
+                <input type="date" [(ngModel)]="cliente.cliDataNascimento" name="cliDataNascimento" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Sexo:</label>
+                <select [(ngModel)]="cliente.cliSexo" name="cliSexo" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="">Selecione</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                    <option value="O">Outro</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700">Observações:</label>
+            <textarea [(ngModel)]="cliente.cliObservacoes" name="cliObservacoes" rows="3" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+        </div>
+        
+        <div class="form-group flex items-center space-x-2">
+            <input type="checkbox" [(ngModel)]="cliente.cliAtivo" name="cliAtivo" class="rounded text-indigo-600 shadow-sm focus:ring-indigo-500">
+            <label class="text-sm font-medium text-gray-700">Cliente Ativo</label>
+        </div>
+        
+        <div class="flex justify-end space-x-4 pt-6">
+            <button 
+                type="button" 
+                (click)="cancel()"
+                class="px-5 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 transition duration-150">
+                Cancelar
+            </button>
+            <button 
+                type="button" 
+                (click)="updateCliente()"
+                class="px-5 py-2 border border-transparent rounded-lg shadow-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Salvar Alterações
+            </button>
+        </div>
     </form>
-  </div>
+    
+    <div *ngIf="!cliente" class="text-center p-8 text-gray-500">
+        <p class="animate-pulse">Carregando dados do cliente...</p>
+    </div>
+</div>
+```eof
+
+Após aplicar esta correção no HTML, o erro **`Cliente#0` não deve mais aparecer** no seu log do Spring Boot. A aplicação deve funcionar normalmente ou, se houver um conflito de concorrência real, o erro HTTP 409 que configuramos no Service será ativado.
